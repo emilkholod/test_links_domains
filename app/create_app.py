@@ -2,7 +2,9 @@ from flask import Flask
 from redis import Redis
 from werkzeug.utils import import_string
 
-redis = Redis(decode_responses=True)
+from app import settings
+
+redis = Redis(host=settings.REDIS_HOST, port=6379, decode_responses=True)
 
 blueprints = [
     'app.routes:bp',
