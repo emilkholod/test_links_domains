@@ -1,7 +1,6 @@
 from flask import Flask
-from werkzeug.utils import import_string
-
 from redis import Redis
+from werkzeug.utils import import_string
 
 redis = Redis(decode_responses=True)
 
