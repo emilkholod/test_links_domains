@@ -69,9 +69,9 @@ def test_visited_domains_correct_unique_domains(mock_redis, test_client):
 
 
 @pytest.mark.parametrize('test_input,expected_code', [
-    ("""{'links1': []}""", 400),
-    ("""{'links': ['ya.ru' 'ya.ru']}""", 400),
-    ("""{'links': 'ya.ru'}""", 400),
+    ("""{"links1": ["ya.ru"]}""", 400),
+    ("""{"links": ["ya.ru" "ya.ru"]}""", 400),
+    ("""{"links": "ya.ru"}""", 400),
 ])
 def test_visited_links_incorrect_post_format(test_input, expected_code, test_client):
     response = test_client.post('/visited_links', data=test_input)
